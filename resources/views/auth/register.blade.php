@@ -11,7 +11,7 @@
             {!! Form::open(['route' => 'signup.post']) !!}
             <div class="form-group">
                 {!! Form::label('name', 'Name') !!}
-                {!! From::text('name', old('name'), ['class', => 'form-control']) !!}
+                {!! Form::text('name', old('name'), ['class' => 'form-control']) !!}
             </div> 
             
             <div class="form-group">
@@ -21,11 +21,11 @@
             
             <div class="form-group">
                 {!! Form::label('password', 'Password') !!}
-                {!! Form::password('password', ['class' => 'form-control']) !!}
+                {!! Form::password('password', ['class' => 'form-control'] ) !!}
             </div>
             
             <div class="form-group">
-                {!! Form::label('password_confirmation', 'Confirmation) !!}
+                {!! Form::label('password_confirmation', 'Confirmation') !!}
                 {!! Form::password('password_confirmation', ['class' => 'form-control']) !!}
             </div>
             
