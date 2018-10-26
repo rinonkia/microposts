@@ -25,7 +25,7 @@ Route::post('signup','Auth\RegisterController@register')->name('signup.post');
 //ログイン認証
 Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
 Route::post('login', 'Auth\LoginController@login')->name('login.post');
-Route::get('logout', 'Auth\RegisterController@logout')->name('logout.get');
+Route::get('logout', 'Auth\LoginController@logout')->name('logout.get');
 
 // ログイン認証付きルーティング　ユーザー一覧/詳細
 Route::group(['middleware' => ['auth']], function() {
@@ -35,6 +35,19 @@ Route::group(['middleware' => ['auth']], function() {
         Route::delete('unfollow', 'UserFollowController@destroy')->name('user.unfollow');
         Route::get('followings', 'UsersController@followings')->name('users.followings');
         Route::get('followers', 'UsersController@followers')->name('users.followers');
+        Route::get('favorites', 'UsersController@favorites')->name('users.favorites');
     });
     Route::resource('microposts','MicropostsController', ['only' => ['store', 'destroy']]);
+    
+    //Route::get('favorite', 'UserController@favorite')->name('favorite.get');
+    Route::group(['prefix' => 'micropost/{id}'], function(){
+        Route::post('onfavor','UserFavoritesController@store')->name('micropost.onfavor');
+        Route::delete('offfavor','UserFavoritesController@destroy')->name('micropost.offfavor');
+    });
+    
+    
+    /*
+    Route::post('favoritepost','UserFavoritesController@store')->name('favoritepost.post');
+    Route::delete('favoritepost','UserFavoritesController@destroy')->name('favoritepost.destroy');
+    */
 });
