@@ -26,5 +26,13 @@
                 {!! link_to_route('signup.get','sign up now!', null, ['class' => 'btn btn-lg btn-primary']) !!}
             </div>
         </div>
+        <div class="col-xs-8 col-xs-offset-2">
+            <div>
+                <h3>こちらは簡易なTwitterクローンです。</h3>
+            </div>
+            <div>
+                @include('auther_message')
+            </div>
+        </div>
     @endif
 @endsection
